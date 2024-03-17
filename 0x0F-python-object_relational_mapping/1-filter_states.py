@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Completed by Ab Yahaya
+"""
 
 import sys
 import MySQLdb
