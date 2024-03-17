@@ -3,11 +3,10 @@
 import sys
 import MySQLdb
 
-
 if __name__ == '__main__':
     args = sys.argv
     if len(args) != 4:
-        print("At least 4 arguments")
+        print("Usage: {} username password database_name".format(args[0]))
         exit(1)
 
     username = args[1]
@@ -16,13 +15,11 @@ if __name__ == '__main__':
 
     try:
         # Connect to MySQL database
-        db = MySQLdb.connect(host='localhost', user=username,
-                             passwd=password, db=database, port=3306)
+        db = MySQLdb.connect(host='localhost', user=username, passwd=password, db=database, port=3306)
         cur = db.cursor()
 
         # Execute SQL query
-        num_rows = cur.execute("SELECT * FROM states WHERE states.name\
-                               LIKE BINARY 'N%' ORDER BY states.id;")
+        num_rows = cur.execute("SELECT * FROM states WHERE states.name LIKE BINARY 'N%' ORDER BY states.id;")
         rows = cur.fetchall()
 
         # Print query results
